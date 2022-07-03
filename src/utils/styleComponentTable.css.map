@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,UAAU,CAAC;EACV,KAAK,EAAE,IAAI;EACX,SAAS,EAAE,CAAC;EACZ,SAAS,EAAE,KAAK;EAChB,aAAa,EAAE,QAAQ;EAEvB,SAAS,EAAE,eAAe;CAC1B",
+    "sources": [
+        "styleComponentTable.scss"
+    ],
+    "names": [],
+    "file": "styleComponentTable.css"
+}

@@ -1,0 +1,11 @@
+{
+  "Api": {
+    "url": "http://localhost/wizard-api/api/",
+    "public_url": "http://localhost/wizard-api/public/",
+    "server_url": "https://v3.phoenixkreatifdigital.com/rest/public/"
+  },
+  "editor": {
+    "width": "210mm",
+    "height": "100%"
+  }
+}

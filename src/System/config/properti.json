@@ -1,0 +1,72 @@
+[
+  {
+    "name": "printConfig",
+    "title": "Konfigurasi Print",
+    "props": [
+      {
+        "type": "select",
+        "label": "papper",
+        "name": "papper",
+        "defaultValue": "0",
+        "select": [
+          { "label": "A4", "value": "A4", "width": "210", "height": "297" },
+          { "label": "A5", "value": "A5", "width": "148.5", "height": "210" }
+        ]
+      },
+      {
+        "type": "text-group-select",
+        "label": "Margin Top",
+        "name": ["marginTop", "satuan"],
+        "defaultValue": "2",
+        "select": [
+          { "label": "Cm", "value": "cm" },
+          { "label": "mm", "value": "mm" },
+          { "label": "Inci", "value": "inci" }
+        ]
+      },
+      {
+        "type": "text-group-select",
+        "label": "Margin Right",
+        "name": ["marginRight", "satuan"],
+        "defaultValue": "2",
+        "select": [
+          { "label": "Cm", "value": "cm" },
+          { "label": "mm", "value": "mm" },
+          { "label": "Inci", "value": "inci" }
+        ]
+      },
+      {
+        "type": "text-group-select",
+        "label": "Margin Left",
+        "name": ["marginLeft", "satuan"],
+        "defaultValue": "2",
+        "select": [
+          { "label": "Cm", "value": "cm" },
+          { "label": "mm", "value": "mm" },
+          { "label": "Inci", "value": "inci" }
+        ]
+      },
+      {
+        "type": "text-group-select",
+        "label": "Margin Bottom",
+        "name": ["marginBottom", "satuan"],
+        "defaultValue": "2",
+        "select": [
+          { "label": "Cm", "value": "cm" },
+          { "label": "mm", "value": "mm" },
+          { "label": "Inci", "value": "inci" }
+        ]
+      },
+      {
+        "type": "select",
+        "label": "Orientation",
+        "name": "orientation",
+        "defaultValue": "0",
+        "select": [
+          { "label": "Portrait", "value": "portrait" },
+          { "label": "Landscape", "value": "landscape" }
+        ]
+      }
+    ]
+  }
+]

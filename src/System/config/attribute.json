@@ -1,0 +1,159 @@
+[
+  {
+    "name": "penduduk",
+    "title": "Penduduk",
+    "type": "auto",
+    "parameter": {
+      "table": "penduduk",
+      "color": "green"
+    },
+    "msg": "data akan otomatis terisi dengan data yang di pilih",
+
+    "components": [
+      {
+        "title": "Penduduk",
+        "name": "penduduk",
+        "primary": true,
+        "label": "penduduk",
+        "attr": "fildQuery",
+        "dataset": [
+          { "label": "Nik", "value": "nik" },
+          { "label": "Kode Desa", "value": "kode_desa" },
+          { "label": "Nomor KK", "value": "no_kk" },
+          { "label": "Nama Lengkap", "value": "nama_lengkap" },
+          { "label": "Jenis Kelamin", "value": "jenis_klamin" },
+          { "label": "Status Perkawinan", "value": "status_perkawinan" },
+          { "label": "Tempat Lahir", "value": "sungai langsat" },
+          { "label": "Tanggal Lahir", "value": "tanggal_lahir" },
+          { "label": "Agama", "value": "agama" },
+          { "label": "Golongan Darah", "value": "gol_darah" },
+          { "label": "Pendidikan", "value": "pendidikan_terakhir" }
+        ]
+      },
+      {
+        "title": "Tambahkan Ketabel",
+        "name": "addToTable",
+        "attr": "addToTable",
+        "primary": false,
+        "dataset": [
+          { "label": "Ya", "value": "true" },
+          { "label": "Tidak", "value": "False" }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "perangkat",
+    "title": "Perangkat",
+    "type": "auto",
+    "parameter": {
+      "table": "perangkat",
+      "color": "pink"
+    },
+    "msg": "data akan otomatis terisi dengan data yang di pilih",
+    "components": [
+      {
+        "title": "Perangkat",
+        "name": "perangkat",
+        "label": "Perangkat",
+        "attr": "fildQuery",
+        "primary": true,
+        "dataset": [
+          { "label": "Nik", "value": "nik" },
+          { "label": "Kode Desa", "value": "kode_desa" },
+          { "label": "Nomor KK", "value": "no_kk" },
+          { "label": "Nama Lengkap", "value": "nama_lengkap" },
+          { "label": "Jenis Kelamin", "value": "jenis_klamin" },
+          { "label": "Status Perkawinan", "value": "status_perkawinan" },
+          { "label": "Tempat Lahir", "value": "sungai langsat" },
+          { "label": "Tanggal Lahir", "value": "tanggal_lahir" },
+          { "label": "Agama", "value": "agama" },
+          { "label": "Golongan Darah", "value": "gol_darah" },
+          { "label": "Pendidikan", "value": "pendidikan_terakhir" }
+        ]
+      },
+      {
+        "title": "Jabatan",
+        "name": "jabatan",
+        "attr": "jabatan",
+        "primary": false,
+        "dataset": [
+          { "label": "Kepala Desa", "value": "KEPALA DESA" },
+          { "label": "Sektretaris Desa", "value": "SEKRETARIS DESA" }
+        ]
+      },
+      {
+        "title": "Tambahkan Ketabel",
+        "name": "addToTable",
+        "attr": "addToTable",
+        "primary": false,
+        "dataset": [
+          { "label": "Ya", "value": "true" },
+          { "label": "Tidak", "value": "False" }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "signature",
+    "title": "Tanda Tangan",
+    "type": "auto",
+    "parameter": {
+      "table": "perangkat",
+      "color": "orange"
+    },
+    "msg": "data akan otomatis terisi dengan data yang di pilih",
+    "components": [
+      {
+        "title": "Signature",
+        "name": "signature",
+        "label": "Perangkat",
+        "attr": "fildQuery",
+        "primary": true,
+        "dataset": [
+          { "label": "Kepala Desa", "value": "KEPALA DESA" },
+          { "label": "Sektretaris Desa", "value": "SEKRETARIS DESA" }
+        ]
+      },
+      {
+        "title": "Tambahkan Ketabel",
+        "name": "addToTable",
+        "attr": "addToTable",
+        "primary": false,
+        "dataset": [
+          { "label": "Ya", "value": "true" },
+          { "label": "Tidak", "value": "False" }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "component_autometic",
+    "title": "Komponen Otomatis",
+    "type": "auto",
+    "parameter": {
+      "table": "null",
+      "color": "blue"
+    },
+    "msg": "akan generate komponen otomatis",
+    "components": [
+      {
+        "title": "Komponen",
+        "name": "component",
+        "label": "Komponen",
+        "attr": "fildQuery",
+        "primary": true,
+        "dataset": [
+          { "label": "dd mm yyyy", "value": "create-now-date" },
+          { "label": "dd mm yyyy HH:SS", "value": "create-now-date-time" },
+          { "label": "Day, dd mm yyyy ", "value": "create-now-date-day" },
+          {
+            "label": "Day, dd mm yyyy HH:SS",
+            "value": "create-now-date-hour-day"
+          },
+          { "label": "Jam", "value": "create-hour" }
+        ]
+      }
+    ]
+  }
+]
