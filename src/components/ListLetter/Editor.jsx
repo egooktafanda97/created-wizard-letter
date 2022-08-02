@@ -15,9 +15,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 // ---------------------------------------------
 import { makeid, cm2px } from "../../System/Helpers/___func";
-
 // redux
-
 const EditorCofig = require("../../System/config/config.json");
 
 export default function Engine(props) {
