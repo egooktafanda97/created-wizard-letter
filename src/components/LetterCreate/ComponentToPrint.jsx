@@ -10,15 +10,20 @@ export const ComponentToPrint = forwardRef((props, ref) => {
             @page {
               size: ${props.config.paperSize} ${props.config.paperOrientation};
               margin: 0 !important;
+              padding: 0 !important;
             }
-            html, body {
+            body {
               margin-top: ${props.config.paperMargin.top};
               margin-bottom: ${props.config.paperMargin.bottom};
               margin-left: ${props.config.paperMargin.left};
               margin-right: ${props.config.paperMargin.right};       
-            }`}
+            }
+          }`}
       </style>
-      <div dangerouslySetInnerHTML={{ __html: `${props.content}` }}></div>
+      <div
+        dangerouslySetInnerHTML={{
+          __html: `${props?.content ?? "<></>"}`,
+        }}></div>
     </div>
   );
 });

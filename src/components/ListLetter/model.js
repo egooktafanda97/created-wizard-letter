@@ -6,7 +6,7 @@ import {
 } from "../config/config";
 import axios from "axios";
 import moment from "moment";
-import { penduduk } from "../config/dummy";
+import { penduduk, perangkat } from "../config/dummy";
 
 const getpapper = async (respose) => {
   api_get(`${url_api_server}wizard/getPapper`, respose);
@@ -16,6 +16,10 @@ const getSearchPenduduk = async (searching, respose) => {
 };
 const getPendudukByDesa = async (respose) => {
   respose(penduduk);
+};
+const getDataPerangkat = async (respose) => {
+  // api_get(`${url_api_server}wizard/getDataInstansi`, respose);
+  respose(perangkat);
 };
 
 async function api_get(url, response) {
@@ -27,4 +31,4 @@ async function api_get(url, response) {
   }
 }
 
-export { getPendudukByDesa, getpapper, getSearchPenduduk };
+export { getPendudukByDesa, getpapper, getSearchPenduduk, getDataPerangkat };

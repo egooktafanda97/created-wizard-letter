@@ -18,9 +18,12 @@ import { useDispatch } from "react-redux";
 // test
 import { pendudukDummy, Perangkat } from "../../System/data/dummy";
 
+import domtoimage from "dom-to-image";
+
 export default function Letter(props) {
   const [data, setData] = useState(null);
-  const [penduduk, setpenduduk] = useState(null);
+  const [penduduk, setpenduduk] = useState({});
+  const [dataPerangkat, setdataPerangkat] = useState([]);
   const [configPrint, setConfigPrint] = useState(null);
   const componentRef = useRef();
   const Setterpadding = {
@@ -48,48 +51,26 @@ export default function Letter(props) {
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
   });
-
-  useEffect(() => {
-    // getPapperRequest(4, (res) => {
-    //   setData(res);
-    //   setConfigPrint(JSON.parse(res.config_print));
-    //   setpenduduk(pendudukDummy);
-    // });
-
-    // setData(localStorage.getItem("_contens"));
-    // setConfigPrint(JSON.parse(localStorage.getItem("config")).papperSetting);
-    setpenduduk(pendudukDummy);
-  }, []);
   useEffect(() => {
     if (Object.keys(props.globalData).length > 0) {
-      setData(props.globalData.code);
-      setConfigPrint(JSON.parse(props.globalData.config_print));
-      setpenduduk(pendudukDummy);
+      setData(props.code);
+      setConfigPrint(getRedux.papperSetting);
+      setpenduduk(props?.dataPenduduk ?? {});
+      setdataPerangkat(props?.dataPerangkat ?? []);
     }
-  }, [props]);
+  }, [props.globalData]);
 
   const hndelGetPenduduk = () => {
-    // setLoadingNext(true);
-
-    // getDataPenduduk($("[name=nik]").val(), (res) => {
-    //   setpenduduk(res);
     onCloseModal();
-    //   setLoadingNext(false);
-    // });
   };
   const hndelBack = () => {
     props.back();
-    // dispatch({ type: "PREVIEW", payload: "hide-preview" });
   };
 
   const hndelCetak = () => {
     if ($("#frame-letter").find(".inp").length) {
       $("#frame-letter").find(".inp")[0].focus();
     } else {
-      // const cont =
-      //   $("#frame-letter div").find("iframe")[0].contentWindow.document.body
-      //     .innerHTML;
-
       setContent(
         $("#frame-letter div").find(`font[method='dev']`).css("border", "none")
           .prevObject[0]?.innerHTML ?? ``
@@ -107,7 +88,6 @@ export default function Letter(props) {
         type: "SET_VALUE_MANUAL_INPUT",
         payload: SetValValue,
       });
-      console.log(getRedux);
       const TimePrint = setInterval(() => {
         handlePrint();
         clearInterval(TimePrint);
@@ -122,16 +102,24 @@ export default function Letter(props) {
           <FaArrowCircleLeft size={16} />
         </button>
         <div>
-          <button className='btn-printing' onClick={hndelCetak}>
-            <FaPrint size={16} />
-          </button>
-          {/* <button
+          <button
             className='btn-printing'
             onClick={() => {
-              setOpenConfigs(true);
+              dispatch({
+                type: "SET_CODE",
+                payload: {
+                  code: `${$("#content").children()[0].innerHTML}`,
+                },
+              });
+              props.editContent();
             }}>
-            <FaCog size={16} />
-          </button> */}
+            <FaPrint size={16} />
+          </button>
+          {!props.printObj && (
+            <button className='btn-printing' onClick={hndelCetak}>
+              <FaPrint size={16} />
+            </button>
+          )}
         </div>
       </div>
       <div style={{ display: "none" }}>
@@ -141,14 +129,7 @@ export default function Letter(props) {
           config={getRedux.papperSetting}
         />
       </div>
-
-      {/* modal */}
-      <Modal
-        closeOnOverlayClick={false}
-        open={open}
-        // onClose={onCloseModal}
-        closeOnEsc={false}
-        center>
+      <Modal closeOnOverlayClick={false} open={open} closeOnEsc={false} center>
         <div className='cards p-3' style={{ width: "400px" }}>
           <div
             className='from-group mb-1'
@@ -261,7 +242,7 @@ export default function Letter(props) {
           <Content
             code={data ?? null}
             penduduk={penduduk}
-            perangkat={Perangkat}
+            perangkat={dataPerangkat}
           />
         </div>
       </div>

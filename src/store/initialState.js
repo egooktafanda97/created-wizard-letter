@@ -24,4 +24,5 @@ export const State = {
   ACTIONVALUE: ``,
   ATTACHMENT: [],
   preview: "hide-preview",
+  CODE: "",
 };

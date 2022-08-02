@@ -78,6 +78,25 @@ function reducer(state = State, action) {
         },
       };
       break;
+    case "PAPPER_SETTING":
+      localStorage.setItem(
+        "config",
+        JSON.stringify(
+          JSON.parse(localStorage.getItem("config")) != undefined
+            ? {
+                ...JSON.parse(localStorage.getItem("config")),
+                ...state,
+                papperSetting: action.payload,
+              }
+            : {
+                ...state,
+                papperSetting: action.payload,
+              }
+        )
+      );
+    case "SET_CODE":
+      return { ...state, CODE: action.payload };
+      break;
     default:
       if (localStorage.getItem("config") == undefined) {
         localStorage.setItem("config", JSON.stringify(state));

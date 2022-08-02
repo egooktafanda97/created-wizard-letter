@@ -7,6 +7,30 @@ $quaternary-color: #54554D;
 $quinary-color: #44466D;
 $danger-color: #FF5A5F;
 
+/* custom scrollbar */
+::-webkit-scrollbar {
+    width: 20px;
+}
+
+::-webkit-scrollbar-track {
+    // background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #d6dee1;
+    border-radius: 20px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #a8bbbf;
+}
+
+.cke_chrome {
+    box-shadow: none !important;
+    border: none !important;
+}
 
 .root {
     height: 100%;
@@ -14,7 +38,8 @@ $danger-color: #FF5A5F;
     padding: 20px;
     padding-left: 50px;
     padding-right: 50px;
-    background-color: #f2f7fb;
+    // background-color: #f2f7fb;
+    background-color: #fff;
     color: #4a4a4a;
     overflow-y: auto;
 
@@ -321,6 +346,14 @@ hr {
         outline: 0;
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     }
+
+    &.disabled {
+        background-color: #bdbdbd;
+        border-color: #adadad;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        color: #333;
+        cursor: not-allowed;
+    }
 }
 
 .right-modal {
@@ -426,7 +459,7 @@ hr {
 }
 
 .nik-search .results {
-    display: none;
+    // display: none;
     position: absolute;
     top: 35px;
     left: 0;
@@ -450,6 +483,12 @@ hr {
     -ms-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
     -o-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.nik-search .results {
+    &.hide {
+        display: none;
+    }
 }
 
 .nik-search .results li {
@@ -491,7 +530,7 @@ hr {
     margin-bottom: -1px
 }
 
-.nik-search .results a {
+.nik-search .results span {
     display: block;
     position: relative;
     margin: 0 -1px;
@@ -503,11 +542,11 @@ hr {
     border-radius: 3px;
 }
 
-.nik-search .results a span {
+.nik-search .results span {
     font-weight: 200
 }
 
-.nik-search .results a:before {
+.nik-search .results span:before {
     content: '';
     width: 18px;
     height: 18px;
@@ -518,7 +557,8 @@ hr {
     background: url("https://cssdeck.com/uploads/media/items/7/7BNkBjd.png") 0 0 no-repeat;
 }
 
-.nik-search .results a:hover {
+.nik-search .results span:hover,
+.nik-search .results span:focus {
     text-decoration: none;
     color: #fff;
     text-shadow: 0 -1px rgba(0, 0, 0, 0.3);
@@ -539,11 +579,13 @@ hr {
 
 :-moz-placeholder {
     color: #a7aabc;
+    background-color: #fff;
     font-weight: 200;
 }
 
 ::-webkit-input-placeholder {
     color: #a7aabc;
+    background-color: #fff;
     font-weight: 200;
 }
 
@@ -561,20 +603,20 @@ hr {
     bottom: 0;
     width: 100%;
     height: 100%;
-    z-index: 9999;
+    z-index: 9999999;
     background-color: rgba(0, 0, 0, 0.5);
     overflow-y: auto;
     margin: 0;
     padding: 0;
     -webkit-transition: all 0.3s ease-in-out;
 
-    &.show_modal {
+    &.show_modal_content {
         visibility: visible;
         opacity: 1;
         transition: all 0.3s ease-in-out;
     }
 
-    &.hide_modal {
+    &.hide_modal_content {
         visibility: hidden;
         opacity: 0;
         transition: all 0.3s ease-in-out;
@@ -635,5 +677,53 @@ hr {
         background: -webkit-linear-gradient(top, #252525 0%, #353535 100%);
         box-shadow: inset 0px 1px 2px #151515, 0px 0px 2px black;
         color: #fff;
+    }
+}
+
+.top-header {
+    width: 100%;
+    // height: 70px;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+
+    .seraching {
+        width: 60%;
+
+        .filter-container {
+            width: 100%;
+        }
+
+        .icn-search {
+            position: absolute;
+            margin-top: -33px;
+            margin-left: 10px;
+        }
+
+        .filterSearcing {
+            width: 100%;
+            padding: 12px;
+            border-radius: 1rem;
+            font-size: 1rem;
+            border: none;
+            padding-left: 40px !important;
+            // background-color: #f1f3f4;
+            border-radius: 10px;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        }
+
+        .filterSearcing:focus {
+            outline: none;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
     }
 }

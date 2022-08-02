@@ -35,13 +35,9 @@ export default function Content(props) {
   // --------
   //   effect to get data
   useEffect(() => {
-    if (props.code != undefined && props.code != null) {
-      //   setData(props.code);
-      //   var Manual = buldInput(Auto);
-      //   setCodes(Manual)
-      // console.log(props);
+    if (props.code != undefined && props.code != null && props.code != "") {
       var codeBuilding = buildAutoDataPenduduk(
-        `<div>${props.code}</div>`,
+        `<div>${props?.code ?? "<></>"}</div>`,
         props.penduduk
       );
 
@@ -60,6 +56,12 @@ export default function Content(props) {
       });
 
       setCodes(codeBuilding);
+      dispatch({
+        type: "SET_CODE",
+        payload: {
+          code: `${codeBuilding}`,
+        },
+      });
       setLoading(false);
     }
   }, [props.code, props.penduduk, props.perangkat]);
@@ -130,7 +132,9 @@ export default function Content(props) {
     <div id='frame-letter'>
       {Codes != null && (
         <>
-          <div dangerouslySetInnerHTML={{ __html: `${Codes}` }}></div>
+          <div
+            id='content'
+            dangerouslySetInnerHTML={{ __html: `${Codes}` }}></div>
         </>
       )}
     </div>
