@@ -6,7 +6,13 @@ import $ from "jquery";
 
 import { getPapperRequest } from "../../System/Model/model_api";
 import styled from "styled-components";
-import { FaSpinner, FaArrowCircleLeft, FaPrint, FaCog } from "react-icons/fa";
+import {
+  FaSpinner,
+  FaArrowCircleLeft,
+  FaPrint,
+  FaCog,
+  FaEdit,
+} from "react-icons/fa";
 
 import Content from "./ContentGenerate";
 import Modal from "react-responsive-modal";
@@ -58,7 +64,7 @@ export default function Letter(props) {
       setpenduduk(props?.dataPenduduk ?? {});
       setdataPerangkat(props?.dataPerangkat ?? []);
     }
-  }, [props.globalData]);
+  }, [props.globalData, props.dataPenduduk]);
 
   const hndelGetPenduduk = () => {
     onCloseModal();
@@ -113,10 +119,13 @@ export default function Letter(props) {
               });
               props.editContent();
             }}>
-            <FaPrint size={16} />
+            <FaEdit size={16} />
           </button>
           {!props.printObj && (
-            <button className='btn-printing' onClick={hndelCetak}>
+            <button
+              className='btn-printing'
+              style={{ marginLeft: "10px" }}
+              onClick={hndelCetak}>
               <FaPrint size={16} />
             </button>
           )}

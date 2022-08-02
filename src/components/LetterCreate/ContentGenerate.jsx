@@ -36,6 +36,8 @@ export default function Content(props) {
   //   effect to get data
   useEffect(() => {
     if (props.code != undefined && props.code != null && props.code != "") {
+      console.log("props.penduduk", props.penduduk);
+
       var codeBuilding = buildAutoDataPenduduk(
         `<div>${props?.code ?? "<></>"}</div>`,
         props.penduduk

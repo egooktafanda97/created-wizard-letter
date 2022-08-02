@@ -63,7 +63,7 @@ export default function index() {
 
   const hndelGetPenduduk = (ev) => {
     getSearchPenduduk(ev, (result) => {
-      if (result.status == 200) {
+      if (result?.status ?? 400 == 200) {
         setDataPenduduk(result.data);
       }
     });
@@ -139,7 +139,7 @@ export default function index() {
         ) : (
           <Preview
             globalData={globalSelectedObj}
-            code={getRedux?.CODE?.code ?? globalSelectedObj?.code}
+            code={getRedux?.CODE?.code}
             dataPenduduk={previewModalPre ? penduduk : userData}
             dataPerangkat={previewModalPre ? penduduk : dataPerangkat}
             back={() => {
@@ -233,6 +233,12 @@ export default function index() {
                           onClick={() => {
                             setRightModal(true);
                             setGlobalSelectedObj(item);
+                            dispatch({
+                              type: "SET_CODE",
+                              payload: {
+                                code: `${item.code}`,
+                              },
+                            });
                           }}>
                           <FaPrint size={15} color={`#6e6d6d`} />
                           &emsp; Buat Surat
@@ -283,9 +289,10 @@ const ModalCetak = (props) => {
     }
   }, [props.papperObj]);
   const hndelNikClikck = (ev) => {
+    console.log(ev);
     setUserNik(ev);
-    $(".results").addClass("hide");
     $(".input-search").val(ev?.nama_lengkap ?? "-");
+    $(".results").addClass("hide");
   };
   return (
     <div>
@@ -326,8 +333,12 @@ const ModalCetak = (props) => {
             type='text'
             autocomplete='off'
             name='q'
+            onClick={() => {
+              $(".results").removeClass("hide");
+            }}
             onKeyUp={(e) => {
               props.hndelSearchNik(e.target.value);
+              $(".results").removeClass("hide");
               setBtnEnabled(false);
             }}
             placeholder='Cari NIK Penduduk'
@@ -439,7 +450,7 @@ const PrintingObj = (props) => {
         getRedux?.papperSetting?.paperSize ?? ObjPrint.paperSize
       );
     }
-  }, [props]);
+  }, [props.defautConfig.config_print]);
 
   const hndelChange = (ev) => {
     const ObjPrint = {
